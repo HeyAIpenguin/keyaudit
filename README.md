@@ -55,7 +55,12 @@ python3 keyaudit.py --json report.json
 ./install-keyaudit.sh
 ```
 
-Installs a `launchd` job that runs daily at 10:00 and shows a macOS notification **only when a new plaintext key appears**. Keys it has already seen don't trigger it again.
+Installs a `launchd` job that runs daily at 10:00 and shows a macOS notification **only when something new is exposed**:
+
+- a plaintext key it has never seen before, or
+- a key it already knows showing up in a **new file** (a fresh backup, a synced folder, a copied `.env`). That copy is the one that ends up somewhere public.
+
+Nothing changes → no notification.
 
 Remove it:
 
